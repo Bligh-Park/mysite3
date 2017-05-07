@@ -1,3 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}post_archive_year.html{% endblock %}
+
+{% block content %}
+<div id="content">
+
 <h1>Post Archives for {{ year|date:"Y" }}</h1>
 
 <ul>
@@ -15,4 +22,6 @@
         <a href="{{ post.get_absolute_url }}"><strong>{{ post.title }}</strong></a></li>
         {% endfor %}
     </ul>
+</div>
+
 </div>

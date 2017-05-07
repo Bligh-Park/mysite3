@@ -1,3 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}post_archive.html{% endblock %}
+
+{% block content %}
+<div id="content">
+
 <h1>Post Archives until {% now "N d, Y" %}</h1>
 
 <ul>
@@ -17,4 +24,6 @@
             </li>
         {% endfor %}
     </ul>
+</div>
+
 </div>
