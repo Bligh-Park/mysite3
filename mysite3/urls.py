@@ -16,6 +16,8 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from mysite3.views import HomeView
+from django.conf.urls.static import static
+from django.conf import settings
 
 #from bookmark.views import BookmarkLV, BookmarkDV
 
@@ -26,8 +28,9 @@ urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
     url(r'^bookmark/', include('bookmark.urls', namespace='bookmark')),
     url(r'^blog/', include('blog.urls', namespace='blog')),
+    url(r'^photo/', include('photo.urls', namespace='photo')),
 
     # Class-based views for Bookmark app
     #url(r'^bookmark/$', BookmarkLV.as_view(), name='index'),
     #url(r'^bookmark/(?P<pk>\d+)/$', BookmarkDV.as_view(), name='detail'),
-]
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
