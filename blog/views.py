@@ -1,7 +1,13 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, ArchiveIndexView, YearArchiveView, MonthArchiveView, \
-    DayArchiveView, TodayArchiveView
+    DayArchiveView, TodayArchiveView, TemplateView
 from blog.models import Post
+from tagging.models import Tag, TaggedItem
+from tagging.views import TaggedObjectList
+
+
+class TagTV(TemplateView):
+    template_name = 'blog/tagging/tagging_cloud.html'
 
 
 class PostLV(ListView):
@@ -9,6 +15,11 @@ class PostLV(ListView):
     template_name = 'blog/post_all.html'
     context_object_name = 'posts'
     paginate_by = 2
+
+
+class PostTOL(TaggedObjectList):
+    model = Post
+    template_name = 'blog/tagging/tagging_post_list.html'
 
 
 class PostDV(DetailView):
